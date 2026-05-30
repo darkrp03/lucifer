@@ -40,17 +40,6 @@ for /f "tokens=2*" %%A in ('reg query "HKLM\System\CurrentControlSet\Control\Ses
 for /f "tokens=2*" %%A in ('reg query "HKCU\Environment" /v Path') do set "usrpath=%%B"
 set "PATH=%syspath%;%usrpath%"
 
-:: 3. Run npm install
-echo.
-if not exist "package.json" (
-    echo [WARNING] package.json not found! Make sure this script is in your project folder.
-    pause
-    exit /B
-)
-
-echo Running 'npm install' to get your dependencies...
-call npm install
-
 echo.
 echo ==========================================
 echo Setup complete! You can now use start.bat
